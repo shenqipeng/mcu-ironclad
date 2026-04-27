@@ -2,13 +2,10 @@
 
 **Ironclad workflow skills for MCU engineering.**
 
-[English](#english) | [中文](#中文)
+<details>
+<summary><strong>English</strong></summary>
 
 ---
-
-<a id="english"></a>
-
-## English
 
 Ironclad workflow skills for MCU engineering — built on [obra/superpowers](https://github.com/obra/superpowers) as the foundation, enhanced with safety guardrails from [garrytan/gstack](https://github.com/garrytan/gstack), supplementary skills from [stellarlinkco/myclaude](https://github.com/stellarlinkco/myclaude) and others, plus an original MCU selection skill — forming a rigorously gated workflow for embedded software development.
 
@@ -30,7 +27,7 @@ Then edit `~/.claude/settings.json` to fill in your API keys.
 ### Update
 
 ```bash
-cd claude-skills
+cd mcu-ironclad
 git pull
 bash install.sh
 ```
@@ -190,11 +187,12 @@ Phase 9 — Cleanup
 | No "done" without evidence | verification-before-completion | Every task + Phase 8 |
 | Think before code | karpathy-guidelines | Every task |
 
+</details>
+
+<details>
+<summary><strong>中文</strong></summary>
+
 ---
-
-<a id="中文"></a>
-
-## 中文
 
 **MCU 工程型开发强约束流程 skill 集。**
 
@@ -218,7 +216,7 @@ bash install.sh
 ### 更新
 
 ```bash
-cd claude-skills
+cd mcu-ironclad
 git pull
 bash install.sh
 ```
@@ -377,3 +375,28 @@ bash install.sh
 | 审查反馈技术验证 | receiving-code-review | 任务 2 修复 |
 | 无证据不能声称完成 | verification-before-completion | 每个任务 + 阶段 8 |
 | 先思考再编码 | karpathy-guidelines | 每个任务 |
+
+</details>
+
+---
+
+## Changelog
+
+### 2026-04-27
+
+- **Renamed project**: `claude-skills` → `mcu-ironclad`
+- Tagline: **Ironclad workflow skills for MCU engineering** / **MCU 工程型开发强约束流程 skill 集**
+- Added bilingual `<details>` tab navigation (EN/CN)
+- Added enforced workflow example (GD32E230 UART module)
+- Fixed source attributions:
+  - `karpathy-guidelines` → [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)
+  - `careful`, `freeze` → [garrytan/gstack](https://github.com/garrytan/gstack)
+- Corrected superpowers skill count: 17 → 14
+- Added SKILLS_GUIDE.md with Mermaid workflow diagram and cross-cutting skill relationships
+
+### 2026-04-27 (Initial)
+
+- Initial release: 24 skills assembled from 5 sources + 1 original
+- `install.sh` one-click installer
+- Settings templates (`settings.json.example`, `settings.local.json.example`)
+- SessionStart hook for auto-loading `using-superpowers`

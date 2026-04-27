@@ -1,8 +1,22 @@
-# MCU Ironclad — Skills Guide / 技能集指南
+# MCU Ironclad — Skills Guide
 
-**Ironclad workflow skills for MCU engineering.** Built on [obra/superpowers](https://github.com/obra/superpowers) as the foundation, enhanced with safety guardrails from [garrytan/gstack](https://github.com/garrytan/gstack), supplementary skills from [stellarlinkco/myclaude](https://github.com/stellarlinkco/myclaude) and others, plus an original MCU selection skill — forming a rigorously gated workflow for embedded software development.
+**Ironclad workflow skills for MCU engineering.**
 
-**MCU 工程型开发强约束流程 skill 集。** 以 [obra/superpowers](https://github.com/obra/superpowers) 为蓝本。因作者为嵌入式软件工程师，吸收了 [garrytan/gstack](https://github.com/garrytan/gstack) 的 freeze 和 careful 安全护栏，补充了 [stellarlinkco/myclaude](https://github.com/stellarlinkco/myclaude) 等项目的单功能加强 skills，以及自研的 mcu-selection，形成一套 MCU 工程型开发的强约束 skill 流程。
+<details>
+<summary><strong>English Introduction</strong></summary>
+
+Built on [obra/superpowers](https://github.com/obra/superpowers) as the foundation, enhanced with safety guardrails from [garrytan/gstack](https://github.com/garrytan/gstack), supplementary skills from [stellarlinkco/myclaude](https://github.com/stellarlinkco/myclaude) and others, plus an original MCU selection skill — forming a rigorously gated workflow for embedded software development.
+
+</details>
+
+<details>
+<summary><strong>中文介绍</strong></summary>
+
+以 [obra/superpowers](https://github.com/obra/superpowers) 为蓝本。因作者为嵌入式软件工程师，吸收了 [garrytan/gstack](https://github.com/garrytan/gstack) 的 freeze 和 careful 安全护栏，补充了 [stellarlinkco/myclaude](https://github.com/stellarlinkco/myclaude) 等项目的单功能加强 skills，以及自研的 mcu-selection，形成一套 MCU 工程型开发的强约束 skill 流程。
+
+</details>
+
+---
 
 ## Sources / 来源
 
