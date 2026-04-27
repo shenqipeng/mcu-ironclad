@@ -7,7 +7,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
 
-echo "=== Claude Skills Installer ==="
+echo "=== MCU Ironclad Installer ==="
 echo "Source: $SCRIPT_DIR"
 echo "Target: $CLAUDE_DIR"
 echo ""
