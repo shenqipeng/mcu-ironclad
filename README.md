@@ -11,7 +11,7 @@ Ironclad workflow skills for MCU engineering — built on [obra/superpowers](htt
 
 ### What's Included
 
-- **24 skills** in `skills/` — brainstorming, MCU selection, systematic debugging, TDD, etc.
+- **25 skills** in `skills/` — brainstorming, MCU selection, systematic debugging, TDD, fact-forcing gates, etc.
 - **Hooks** in `hooks/` — SessionStart hook for auto-loading `using-superpowers`
 
 ### Quick Install
@@ -50,6 +50,7 @@ These are starting points. The installer will not overwrite your existing settin
 | find-skills | Discover and install new skills | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
 | finishing-a-development-branch | Merge/integrate completed work | [obra/superpowers](https://github.com/obra/superpowers) |
 | freeze | Restrict file edits to a directory | [garrytan/gstack](https://github.com/garrytan/gstack) |
+| gateguard | Fact-forcing gate: investigate before editing | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) |
 | karpathy-guidelines | Coding quality principles | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) |
 | mcu-selection | MCU selection from 284+ database | **Original** |
 | product-requirements | Generate PRD with quality scoring | [stellarlinkco/myclaude](https://github.com/stellarlinkco/myclaude/tree/master/skills/product-requirements) |
@@ -78,6 +79,7 @@ These are starting points. The installer will not overwrite your existing settin
 | [stellarlinkco/myclaude](https://github.com/stellarlinkco/myclaude) | 4 | product-requirements, test-cases, skill-install, sparv |
 | [anthropics/skills](https://github.com/anthropics/skills) | 1 | skill-creator |
 | [vercel-labs/skills](https://github.com/vercel-labs/skills) | 1 | find-skills |
+| [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | 1 | gateguard (adapted with embedded-specific checks) |
 | **Original** | 1 | mcu-selection |
 
 ### Enforced Workflow Example
@@ -134,6 +136,7 @@ Phase 7 — Execution [subagent-driven-development]
 │
 │   Task 1: UART GPIO and clock config
 │   ├── 🛡️ [freeze] Lock edits to drivers/uart/ only
+│   ├── 🛡️ [gateguard] DENY first edit → list importers, public interface, hw context → ALLOW
 │   ├── 🛡️ [karpathy-guidelines] Think first, surgical changes
 │   ├── 🛡️ [careful] Check: no flash erase in this task
 │   ├── [TDD] Write test → RED → implement → GREEN
@@ -180,6 +183,7 @@ Phase 9 — Cleanup
 | Plan must exist before coding | writing-plans | Phase 5 |
 | Isolated workspace | using-git-worktrees | Phase 6 |
 | File edit scope locked | freeze | Every task (Task 1-6) |
+| Investigate before editing | gateguard | First edit per file (Task 1) |
 | Destructive operation confirmation | careful | DMA writes (Task 4) |
 | Test first, then code | test-driven-development | Every task |
 | Code review after each task | requesting-code-review | Every task |
@@ -200,7 +204,7 @@ Phase 9 — Cleanup
 
 ### 包含内容
 
-- **24 个 skills** 位于 `skills/` — 设计探索、MCU选型、系统化调试、TDD 等
+- **25 个 skills** 位于 `skills/` — 设计探索、MCU选型、系统化调试、TDD、事实强制门 等
 - **Hooks** 位于 `hooks/` — SessionStart 钩子，自动加载 `using-superpowers`
 
 ### 快速安装
@@ -239,6 +243,7 @@ bash install.sh
 | find-skills | 发现和安装新技能 | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
 | finishing-a-development-branch | 合并/集成已完成的工作 | [obra/superpowers](https://github.com/obra/superpowers) |
 | freeze | 将文件编辑限制在指定目录 | [garrytan/gstack](https://github.com/garrytan/gstack) |
+| gateguard | 事实强制门：编辑前必须调查 | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) |
 | karpathy-guidelines | 编码质量准则 | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) |
 | mcu-selection | 从 284+ 数据库中选择 MCU | **原创** |
 | product-requirements | 生成交互式 PRD（100分制评分） | [stellarlinkco/myclaude](https://github.com/stellarlinkco/myclaude/tree/master/skills/product-requirements) |
@@ -267,6 +272,7 @@ bash install.sh
 | [stellarlinkco/myclaude](https://github.com/stellarlinkco/myclaude) | 4 | product-requirements, test-cases, skill-install, sparv |
 | [anthropics/skills](https://github.com/anthropics/skills) | 1 | skill-creator |
 | [vercel-labs/skills](https://github.com/vercel-labs/skills) | 1 | find-skills |
+| [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | 1 | gateguard（含嵌入式专项检查） |
 | **原创** | 1 | mcu-selection |
 
 ### 强约束工作流案例
@@ -323,6 +329,7 @@ bash install.sh
 │
 │   任务 1：UART GPIO 和时钟配置
 │   ├── 🛡️ [freeze] 锁定编辑范围为 drivers/uart/
+│   ├── 🛡️ [gateguard] 首次编辑被拒绝 → 列出导入者、公共接口、硬件上下文 → 允许
 │   ├── 🛡️ [karpathy-guidelines] 先思考，精准修改
 │   ├── 🛡️ [careful] 检查：本任务无 flash 擦除操作
 │   ├── [TDD] 编写测试 → 红 → 实现 → 绿
@@ -369,6 +376,7 @@ bash install.sh
 | 编码前必须有计划 | writing-plans | 阶段 5 |
 | 隔离工作区 | using-git-worktrees | 阶段 6 |
 | 文件编辑范围锁定 | freeze | 每个任务（任务 1-6） |
+| 编辑前必须调查 | gateguard | 每个文件首次编辑（任务 1） |
 | 破坏性操作确认 | careful | DMA 寄存器写入（任务 4） |
 | 先写测试再写代码 | test-driven-development | 每个任务 |
 | 每个任务后代码审查 | requesting-code-review | 每个任务 |
@@ -381,6 +389,14 @@ bash install.sh
 ---
 
 ## Changelog
+
+### 2026-04-28
+
+- **Added gateguard skill** — fact-forcing pre-action gate (DENY→FORCE→ALLOW), adapted from [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) with embedded-specific checks (register shadow, clock dependency, interrupt state, DMA conflict, pin mux)
+- **Installed context7 MCP** — real-time library/framework documentation lookup
+- Skills count: 24 → 25
+- Sources count: 7 → 8 (added ECC)
+- Updated SKILLS_GUIDE.md: Mermaid workflow diagram, cross-cutting skills table, acknowledgments
 
 ### 2026-04-27
 

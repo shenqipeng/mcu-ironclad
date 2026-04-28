@@ -28,6 +28,7 @@ Built on [obra/superpowers](https://github.com/obra/superpowers) as the foundati
 | [stellarlinkco/myclaude](https://github.com/stellarlinkco/myclaude) | 4 | product-requirements, test-cases, skill-install, sparv |
 | [anthropics/skills](https://github.com/anthropics/skills) | 1 | skill-creator |
 | [vercel-labs/skills](https://github.com/vercel-labs/skills) | 1 | find-skills |
+| [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | 1 | gateguard |
 | **Original / 原创** | 1 | mcu-selection |
 
 ---
@@ -79,6 +80,7 @@ Built on [obra/superpowers](https://github.com/obra/superpowers) as the foundati
 | **receiving-code-review** | Processes code review feedback with technical rigor before implementing. | 在实施前以技术严谨性处理代码审查反馈。 | [obra/superpowers](https://github.com/obra/superpowers) |
 | **careful** | Safety guardrails for destructive commands. Signals: flash, erase, fuse, force-push. | 破坏性命令的安全护栏。信号词：烧录、擦除、熔丝、强制推送。 | [garrytan/gstack](https://github.com/garrytan/gstack) |
 | **freeze** | Restricts file edits to a specific directory. Especially valuable in embedded debugging. | 将文件编辑限制在特定目录。在嵌入式调试中特别有价值。 | [garrytan/gstack](https://github.com/garrytan/gstack) |
+| **gateguard** | Fact-forcing gate: block Edit/Write before investigation. DENY→FORCE→ALLOW. Adapted with embedded-specific checks (register shadow, clock, DMA, pin mux). | 事实强制门：编辑前阻止→强制调查→允许。含嵌入式专项检查（寄存器影子、时钟、DMA、引脚复用）。 | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) |
 
 ### 7. Debugging / 调试
 
@@ -147,6 +149,7 @@ flowchart TD
         RCVD[receiving-code-review<br/>接收代码审查]
         CARE[careful<br/>安全护栏]
         FRZ[freeze<br/>编辑范围锁定]
+        GG[gateguard<br/>事实强制门]
     end
 
     subgraph Debug["Debugging / 调试"]
@@ -194,12 +197,14 @@ flowchart TD
     SDD -.-> KG
     SDD -.-> CARE
     SDD -.-> FRZ
+    SDD -.-> GG
     SDD -.-> TDD
     SDD -.-> RCR
     SDD -.-> VBC
     EP -.-> KG
     EP -.-> CARE
     EP -.-> FRZ
+    EP -.-> GG
 
     %% Code review
     RCR --> RCVD
@@ -239,15 +244,15 @@ flowchart TD
     class WP,TC plan
     class UGW,SDD,EP,DPA exec
     class TDD,VBC test
-    class KG,RCR,RCVD,CARE,FRZ qual
+    class KG,RCR,RCVD,CARE,FRZ,GG qual
     class SD debug
     class FD deliver
     class WS,SC,SI,FS meta
     class SP workflow
 ```
 
-> **Node colors / 节点颜色：** Red = original work (mcu-selection). Orange = quality guardrails from gstack (freeze, careful). Other colors = categories, see legend above.
-> 红色 = 原创（mcu-selection）。橙色中 freeze 和 careful 来自 gstack 安全护栏。其余颜色代表类别，见上方图例。
+> **Node colors / 节点颜色：** Red = original work (mcu-selection). Orange = quality guardrails from gstack (freeze, careful) and ECC (gateguard). Other colors = categories, see legend above.
+> 红色 = 原创（mcu-selection）。橙色中 freeze 和 careful 来自 gstack 安全护栏，gateguard 来自 ECC。其余颜色代表类别，见上方图例。
 
 ---
 
@@ -301,6 +306,7 @@ These skills are invoked by other skills at specific points, not triggered direc
 |-------|-----------|----------------|--------|
 | **freeze** | systematic-debugging, subagent-driven-development, executing-plans | Before editing — lock scope to fault module or task directory / 编辑前锁定范围到故障模块或任务目录 | [garrytan/gstack](https://github.com/garrytan/gstack) |
 | **careful** | systematic-debugging, subagent-driven-development, finishing-a-development-branch | Before destructive ops: flash, erase, fuse, force-push / 破坏性操作前：烧录、擦除、熔丝、强制推送 | [garrytan/gstack](https://github.com/garrytan/gstack) |
+| **gateguard** | subagent-driven-development, executing-plans, systematic-debugging | Before first edit per file — force investigation of importers, public interface, hw context / 每个文件首次编辑前——强制调查导入者、公共接口、硬件上下文 | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) |
 | **karpathy-guidelines** | subagent-driven-development, executing-plans, systematic-debugging | During implementation — ensures quality principles / 实现过程中确保质量准则 | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) |
 | **verification-before-completion** | TDD, systematic-debugging, subagent-driven-development, finishing-a-development-branch | Before claiming done/fixed/passing / 完成前必须验证 | [obra/superpowers](https://github.com/obra/superpowers) |
 | **requesting-code-review** | subagent-driven-development (per task), finishing-a-development-branch | After implementation, before merge / 实现后合并前 | [obra/superpowers](https://github.com/obra/superpowers) |
@@ -316,3 +322,4 @@ These skills are invoked by other skills at specific points, not triggered direc
 - [stellarlinkco/myclaude](https://github.com/stellarlinkco/myclaude) — product-requirements, test-cases, skill-install, sparv
 - [anthropics/skills](https://github.com/anthropics/skills) — skill-creator
 - [vercel-labs/skills](https://github.com/vercel-labs/skills) — find-skills
+- [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) — gateguard (adapted with embedded-specific checks)
