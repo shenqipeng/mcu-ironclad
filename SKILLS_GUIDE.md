@@ -47,7 +47,7 @@ Built on [obra/superpowers](https://github.com/obra/superpowers) as the foundati
 |-------|-------------|------|--------|
 | **product-requirements** | Interactive Product Owner with 100-point quality scoring. Generates PRD at score ≥90. | 交互式产品负责人，100 分制质量评分，≥90 分生成 PRD。 | [stellarlinkco/myclaude](https://github.com/stellarlinkco/myclaude/tree/master/skills/product-requirements) |
 | **brainstorming** | Collaborative design exploration. One question at a time, proposes 2-3 approaches. HARD GATE: no code before design approval. | 协作式设计探索。逐个提问，提出 2-3 种方案。硬性门槛：设计批准前不写代码。 | [obra/superpowers](https://github.com/obra/superpowers) |
-| **mcu-selection** | MCU selection from 284+ database (SiLabs, GigaDevice, Fudan Micro, WCH, XHSC). | 从 284+ 数据库中选择 MCU（芯科、兆易创新、复旦微、沁恒、小华）。 | **Original / 原创** |
+| **mcu-selection** | MCU selection from 650+ database (Artery, GigaDevice, Fudan Micro, WCH, XHSC, SiLabs, MindMotion, APT). | 从 650+ 数据库中选择 MCU（雅特力、兆易创新、复旦微、沁恒、小华、芯科、灵动微、爱普特）。 | **Original / 原创** |
 
 ### 3. Planning / 规划
 
